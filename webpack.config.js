@@ -12,8 +12,19 @@ const config = {
             {
                 test: /\.(js|jsx)$/,
                 loader: 'babel-loader'
+            },
+            {
+                // check for files ending with .css (uses Regex)
+                test: /\.css$/,
+                // use these loaders of .css files. 'css loader get run first and is
+                // used to handle the imports of our css files inside our jsx files.
+                // The style loader then mounts our css into the DOM
+                loaders: ['style-loader', 'css-loader']
             }
         ]
+    },
+    resolve: {
+        extensions : ['.js', '.jsx']
     }
 };
 module.exports = config;
